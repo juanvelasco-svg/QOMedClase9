@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aldehídos, Cetonas y Ácidos Carboxílicos | Química Orgánica</title>
+<style>
+    :root {
+        --QOMed-gold: #D4AF37;
+        --QOMed-dark: #1a1a2e;
+        --QOMed-blue: #16213e;
+        --QOMed-light: #0f3460;
+        --accent: #e94560;
+        --text: #2c3e50;
+        --white: #ffffff;
+        --sand: #f4e9c1;
+        --shadow: rgba(0, 0, 0, 0.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ===== SANGRÍA DE VIÑETAS Y LISTAS ===== */
+    ul:not(.map-tree), ol {
+        padding-left: 2.4rem;
+        margin: 0.5rem 0 1rem;
+    }
+    ul:not(.map-tree) { list-style: none; }
+    ul:not(.map-tree) li, ol li { margin: 0.45rem 0; }
+
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    header { background: linear-gradient(135deg, var(--QOMed-dark) 0%, var(--QOMed-blue) 100%); color: var(--white); padding: 2rem; text-align: center; box-shadow: 0 6px 20px var(--shadow); position: relative; overflow: hidden; border-bottom: 5px solid var(--QOMed-gold); }
+    .logo-container { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .logo-QOMed { width: 120px; height: auto; background: var(--white); border-radius: 50%; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); color: var(--QOMed-gold); }
+    .subtitle { font-size: 1.2rem; opacity: 0.95; font-weight: 300; }
+    .nav-container { background: var(--QOMed-blue); padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px var(--shadow); }
+    .nav-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; max-width: 1400px; margin: 0 auto; }
+    .nav-btn { background: var(--white); color: var(--QOMed-dark); border: none; padding: 0.8rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+    .nav-btn:hover, .nav-btn.active { background: var(--QOMed-gold); color: var(--QOMed-dark); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212,175,55,0.4); }
+    .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+    .section { display: none; animation: fadeIn 0.5s ease; }
+    .section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .card { background: var(--white); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 8px 24px var(--shadow); border-left: 6px solid var(--QOMed-gold); transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-5px); }
+    h2 { color: var(--QOMed-blue); margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 3px solid var(--QOMed-gold); display: flex; align-items: center; gap: 0.8rem; font-size: 2rem; }
+    h3 { color: var(--QOMed-light); margin: 1.5rem 0 1rem; font-size: 1.5rem; }
+    .molecule-img { max-width: 100%; height: auto; border-radius: 12px; margin: 1rem 0; box-shadow: 0 4px 12px var(--shadow); }
+    .img-container { text-align: center; margin: 2rem 0; }
+    .calculator { background: linear-gradient(135deg, #fff9f5 0%, #fff0e8 100%); border: 3px solid var(--QOMed-gold); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+    .calc-title { color: var(--QOMed-blue); font-size: 1.6rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .calc-input-group { margin: 1rem 0; }
+    .calc-input-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--QOMed-dark); }
+    .calc-input-group input, .calc-input-group select { width: 100%; padding: 0.8rem; border: 2px solid var(--sand); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s; }
+    .calc-input-group input:focus, .calc-input-group select:focus { outline: none; border-color: var(--QOMed-gold); }
+    .calc-button { background: var(--QOMed-blue); color: var(--white); border: none; padding: 1rem 2rem; border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 12px var(--shadow); }
+    .calc-button:hover { background: var(--QOMed-gold); color: var(--QOMed-dark); transform: translateY(-2px); }
+    .calc-result { background: var(--white); border-left: 5px solid var(--accent); padding: 1.5rem; margin-top: 1.5rem; border-radius: 8px; font-size: 1.1rem; display: none; }
+    .calc-result.show { display: block; animation: slideIn 0.5s ease; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px var(--shadow); }
+    th { background: linear-gradient(135deg, var(--QOMed-blue) 0%, var(--QOMed-light) 100%); color: var(--white); padding: 1.2rem; text-align: left; font-weight: 600; }
+    td { padding: 1rem 1.2rem; border-bottom: 1px solid #eee; transition: background 0.3s; }
+    tr:hover td { background: #f8fff0; }
+    .info-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left: 5px solid #2196f3; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+    .tip-box { background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%); border-left: 5px solid #ffc107; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+    .bio-box { background: linear-gradient(135deg, #d1ecf1 0%, #a8dadc 100%); border-left: 5px solid #17a2b8; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+    .pharma-box { background: linear-gradient(135deg, #f8d7da 0%, #f1aeb5 100%); border-left: 5px solid #dc3545; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+    .problem-box { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left: 5px solid #28a745; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+    details.solution { margin-top: 1rem; background: #f8f9fa; border: 2px solid var(--QOMed-light); border-radius: 10px; padding: 0.8rem 1.2rem; }
+    details.solution summary { cursor: pointer; font-weight: 700; color: var(--QOMed-light); }
+    details.solution[open] summary { margin-bottom: 0.8rem; border-bottom: 1px dashed var(--QOMed-light); padding-bottom: .4rem; }
+    .mnemonic-card { background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); border: 3px solid var(--accent); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; position: relative; overflow: hidden; }
+    .mnemonic-title { color: var(--accent); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.2rem; }
+    .glossary-term { background: var(--white); border: 2px solid var(--QOMed-gold); border-radius: 8px; padding: 1rem; margin: 0.8rem 0; cursor: pointer; transition: all 0.3s; }
+    .glossary-term:hover { background: #fff9e6; transform: translateX(5px); }
+    .glossary-definition { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--QOMed-gold); }
+    .glossary-definition.show { display: block; animation: fadeIn 0.3s ease; }
+    .error-card { background: linear-gradient(135deg, #ffe6e6 0%, #ffb3b3 100%); border-left: 5px solid #dc3545; padding: 1.5rem; margin: 1rem 0; border-radius: 0 12px 12px 0; }
+    .error-title { color: #dc3545; font-weight: 700; margin-bottom: 0.5rem; }
+    .correction { background: #d4edda; border-left: 3px solid #28a745; padding: 1rem; margin-top: 1rem; border-radius: 0 8px 8px 0; }
+    .quiz-container { background: linear-gradient(135deg, var(--QOMed-blue) 0%, var(--QOMed-light) 100%); color: var(--white); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+    .quiz-question { font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600; }
+    .quiz-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .quiz-option { background: var(--white); color: var(--text); border: 3px solid transparent; padding: 1.2rem; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; }
+    .quiz-option:hover:not(:disabled) { border-color: var(--QOMed-gold); transform: translateY(-3px); }
+    .quiz-option:disabled { cursor: not-allowed; opacity: 0.95; }
+    .quiz-option.correct { background: #4caf50; color: white; border-color: #2e7d32; }
+    .quiz-option.incorrect { background: #f44336; color: white; border-color: #c62828; }
+    .quiz-progress { max-width: 720px; margin: 0 auto 1rem; }
+    .quiz-progress-bar-bg { height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; }
+    .quiz-progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--QOMed-gold), var(--accent)); transition: width 0.4s; }
+    .quiz-stats { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+    .quiz-stat { padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 700; color: #fff; font-size: 0.95rem; background: var(--QOMed-light); }
+    .footer { background: var(--QOMed-dark); color: var(--white); text-align: center; padding: 2.5rem; margin-top: 3rem; border-top: 5px solid var(--QOMed-gold); }
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow); }
+    .table-responsive table { min-width: 600px; width: 100%; margin: 0; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab { background: var(--sand); border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+    .tab.active { background: var(--QOMed-gold); color: var(--QOMed-dark); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+    .fc-stats { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+    .fc-stat { padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 700; color: #fff; font-size: 0.95rem; }
+    .fc-stat.good { background: #28a745; } .fc-stat.bad { background: #dc3545; } .fc-stat.pending { background: #6c757d; } .fc-stat.total { background: var(--QOMed-light); }
+    .fc-progress { height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; max-width: 720px; margin: 0 auto 1.5rem; }
+    .fc-progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--QOMed-gold), var(--accent)); transition: width 0.4s; }
+    .flashcard-scene { perspective: 1400px; max-width: 720px; height: 320px; margin: 0 auto 1.5rem; }
+    .flashcard { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+    .flashcard.flipped { transform: rotateY(180deg); }
+    .fc-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: auto; box-shadow: 0 8px 24px var(--shadow); font-size: 1.15rem; }
+    .fc-front { background: linear-gradient(135deg, var(--QOMed-blue), var(--QOMed-light)); color: #fff; border: 3px solid var(--QOMed-gold); }
+    .fc-back { background: linear-gradient(135deg, #fff9e6, var(--sand)); color: var(--text); border: 3px solid var(--QOMed-gold); transform: rotateY(180deg); }
+    .fc-label { font-size: 0.85rem; letter-spacing: 2px; font-weight: 800; opacity: 0.8; margin-bottom: 1rem; }
+    .fc-hint { margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; font-style: italic; }
+    .fc-controls { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .fc-btn { border: none; padding: 0.9rem 2rem; border-radius: 30px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.3s; color: #fff; }
+    .fc-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .fc-btn.good { background: #28a745; } .fc-btn.bad { background: #dc3545; }
+    .fc-btn:not(:disabled):hover { transform: translateY(-3px); }
+    .fc-link { background: none; border: none; color: #6c757d; text-decoration: underline; cursor: pointer; font-size: 0.85rem; margin-top: 1rem; }
+
+    /* ===== MAPA CONCEPTUAL ===== */
+    .map-container { overflow-x: auto; padding: 1rem 0; }
+    .map-tree, .map-tree ul { list-style: none; margin: 0; padding-left: 0; }
+    .map-tree ul { display: none; padding-left: 1.6rem; margin: 0.6rem 0 0; border-left: 3px solid var(--QOMed-gold); }
+    .map-tree li.open > ul { display: block; animation: fadeIn 0.4s ease; }
+    .map-tree li { margin: 0.4rem 0; }
+    .map-node { display: inline-block; background: var(--QOMed-blue); color: #fff; padding: 0.6rem 1.1rem; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+    .map-node:hover { background: var(--QOMed-gold); color: var(--QOMed-dark); transform: translateX(4px); }
+    .map-node.root { background: var(--accent); font-size: 1.15rem; }
+    .map-node.branch { background: var(--QOMed-light); }
+    .map-leaf { display: inline-block; background: var(--sand); color: var(--text); padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.95rem; border: 2px solid var(--QOMed-gold); }
+    li.has-children > .map-node::before { content: '▶ '; font-size: 0.8em; }
+    li.has-children.open > .map-node::before { content: '▼ '; font-size: 0.8em; }
+
+    @media (max-width: 768px) {
+        h1 { font-size: 1.8rem; } h2 { font-size: 1.5rem; } h3 { font-size: 1.2rem; }
+        .logo-container { flex-direction: column; gap: 1rem; } .logo-QOMed { width: 80px; }
+        .container { padding: 1rem; } .card { padding: 1.5rem; }
+        .nav-buttons { gap: 0.5rem; } .nav-btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+        .quiz-options { grid-template-columns: 1fr; }
+        .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; }
+        .tab { flex-shrink: 0; padding: 0.6rem 1rem; font-size: 0.9rem; }
+        .flashcard-scene { height: 360px; } .fc-face { font-size: 1rem; padding: 1rem; }
+    }
+    @media (max-width: 480px) {
+        h1 { font-size: 1.4rem; } .subtitle { font-size: 0.9rem; } header { padding: 1rem; }
+        .card { padding: 1rem; } .nav-btn { padding: 0.5rem 0.7rem; font-size: 0.8rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="Logo-QOMed.png" alt="Logo QOMed" class="logo-QOMed">
+            <div>
+                <h1>Química Orgánica</h1>
+                <p class="subtitle">Especializada para alumnos de Medicina</p>
+            <p class="subtitle">Capítulo 9: Aldehídos, Cetonas, Ácidos Carboxílicos y Derivados</p>
+        </div>
+    </div>
+</header>
+
+<nav class="nav-container">
+    <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showSection('inicio', this)">🏠 Inicio</button>
+        <button class="nav-btn" onclick="showSection('conceptos', this)">📚 Conceptos</button>
+        <button class="nav-btn" onclick="showSection('mapa', this)">🗺️ Mapa Conceptual</button>
+        <button class="nav-btn" onclick="showSection('flashcards', this)">🃏 Flashcards</button>
+        <button class="nav-btn" onclick="showSection('calculadoras', this)">🧮 Herramientas</button>
+        <button class="nav-btn" onclick="showSection('aplicaciones', this)">🏥 Aplicaciones</button>
+        <button class="nav-btn" onclick="showSection('mnemotecnias', this)">🧠 Mnemotecnias</button>
+        <button class="nav-btn" onclick="showSection('glosario', this)">📖 Glosario</button>
+        <button class="nav-btn" onclick="showSection('errores', this)">⚠️ Errores Comunes</button>
+        <button class="nav-btn" onclick="showSection('bibliografia', this)">📚 Bibliografía</button>
+        <button class="nav-btn" onclick="showSection('quiz', this)">🎯 Quiz</button>
+    </div>
+</nav>
+
+<div class="container">
+
+<!-- ============ INICIO ============ -->
+<section id="inicio" class="section active">
+    <div class="card">
+        <h2>🎯 Objetivos de la Sesión</h2>
+        <div class="info-box">
+            <ul style="font-size: 1.1rem; line-height: 2;">
+                <li>✓ Identificar las características estructurales de los aldehídos y cetonas.</li>
+                <li>✓ Reconocer las principales reacciones de aldehídos, cetonas, ácidos carboxílicos y derivados.</li>
+                <li>✓ Identificar los productos de oxidación y reducción de aldehídos y cetonas.</li>
+                <li>✓ Identificar los productos de hidrólisis de los ácidos carboxílicos y derivados.</li>
+            </ul>
+        </div>
+        <h3>🩺 Importancia para la Medicina</h3>
+        <div class="bio-box">
+            <div><strong>¿Por qué un futuro médico debe dominar los compuestos carbonílicos?</strong>
+                <ul style="font-size: 1rem; margin-top: 1rem;">
+                    <li>• Los <strong>aldehídos</strong> como el formaldehído y acetaldehído son metabolitos tóxicos importantes.</li>
+                    <li>• Las <strong>cetonas</strong> (acetona, acetoacetato) son cuerpos cetónicos en diabetes y ayuno.</li>
+                    <li>• Los <strong>ácidos carboxílicos</strong> incluyen fármacos como AINEs (aspirina, ibuprofeno).</li>
+                    <li>• Los <strong>ésteres</strong> son prodrugs y metabolitos de fármacos.</li>
+                    <li>• Las <strong>amidas</strong> forman la base de antibióticos β-lactámicos (penicilinas, cefalosporinas).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tip-box"><strong>📌 Ruta de estudio sugerida:</strong> Conceptos → Mapa conceptual → Flashcards → Herramientas → Aplicaciones → Quiz (10 preguntas aleatorias de una base de 30; cada ciclo recarga preguntas nuevas).</div>
+        <div class="pharma-box"><strong>Regla de oro del capítulo:</strong> <strong>Aldehídos</strong> son más reactivos que cetonas (menos impedimento estérico, más electrofílicos). <strong>Orden de reactividad de derivados de ácido:</strong> Cloruro de acilo > Anhídrido > Éster > Amida > Ion carboxilato. <strong>Oxidación:</strong> Aldehídos → ácidos carboxílicos (Tollens, Fehling, Benedict). <strong>Reducción:</strong> Aldehídos → alcoholes primarios; Cetonas → alcoholes secundarios.</div>
+    </div>
+</section>
+
+<!-- ============ CONCEPTOS ============ -->
+<section id="conceptos" class="section">
+    <div class="card">
+        <h2> Conceptos</h2>
+        <div id="conceptos-tabs" class="tab-group">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('conceptos-tabs','sub-carbonilo', this)">⚛️ Grupo Carbonilo</button>
+                <button class="tab" onclick="showTab('conceptos-tabs','sub-aldehidos-cetonas', this)">🔬 Aldehídos y Cetonas</button>
+                <button class="tab" onclick="showTab('conceptos-tabs','sub-adicion', this)">💥 Adición Nucleofílica</button>
+                <button class="tab" onclick="showTab('conceptos-tabs','sub-oxidacion', this)">🔥 Oxidación y Reducción</button>
+                <button class="tab" onclick="showTab('conceptos-tabs','sub-derivados', this)">🧪 Derivados de Ácido</button>
+                <button class="tab" onclick="showTab('conceptos-tabs','sub-hidrolisis', this)">💧 Hidrólisis</button>
+            </div>
+
+            <!-- SUB: GRUPO CARBONILO -->
+            <div id="sub-carbonilo" class="tab-content active">
+                <h3>⚛️ Estructura del Grupo Carbonilo</h3>
+                <div class="info-box">El grupo carbonilo (C=O) consiste en un doble enlace entre carbono y oxígeno. El carbono tiene hibridación <strong>sp²</strong> con geometría trigonal plana (ángulos ~120°). El enlace es <strong>polarizado</strong>: el oxígeno es δ⁻ (electronegativo) y el carbono es δ⁺ (electrofílico).</div>
+                <div class="img-container">
+                    <img src="grupo-carbonilo-estructura.png" alt="Estructura del grupo carbonilo mostrando hibridación sp2, geometría trigonal plana y polarización del enlace C=O" class="molecule-img">
+                    <p style="font-style: italic; color:#666;">El orbital p sin hibridar del carbono se solapa con un orbital p del oxígeno formando el enlace π.</p>
+                </div>
+                <div class="tip-box"><strong>Polarización:</strong> El oxígeno es más electronegativo que el carbono, por lo que los electrones del enlace no están igualmente compartidos. Esto crea un <strong>momento dipolar</strong> importante que hace al carbono <strong>electrofílico</strong> y susceptible al ataque nucleofílico.</div>
+                <div class="problem-box"><strong>Ejercicio:</strong> ¿Por qué el enlace C=O es más corto y fuerte que un enlace C=C?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>Porque está <strong>polarizado</strong>. La atracción electrostática entre el Cδ⁺ y Oδ⁻ añade carácter iónico al enlace, acortándolo y fortaleciéndolo además del solapamiento π.</p>
+                </details>
+            </div>
+
+            <!-- SUB: ALDEHÍDOS Y CETONAS -->
+            <div id="sub-aldehidos-cetonas" class="tab-content">
+                <h3>🔬 Aldehídos vs Cetonas</h3>
+                <div class="info-box"><strong>Aldehídos:</strong> R-CHO (el carbono carbonílico está unido al menos a un H).<br><strong>Cetonas:</strong> R-CO-R' (el carbono carbonílico está unido a dos grupos alquilo/arilo).</div>
+                <div class="tip-box"><strong>Reactividad:</strong> Los <strong>aldehídos son más reactivos</strong> que las cetonas porque:
+                    <ul>
+                        <li>1) Menor impedimento estérico (un H es más pequeño que un grupo alquilo)</li>
+                        <li>2) El carbono carbonílico está <strong>más polarizado</strong> (los grupos alquilo de las cetonas donan electrones por efecto inductivo, estabilizando el δ⁺)</li>
+                    </ul>
+                </div>
+                <div class="img-container">
+                    <img src="aldehido-vs-cetona-reaktividad.png" alt="Comparación de reactividad entre aldehídos y cetonas mostrando que los aldehídos son más electrofílicos" class="molecule-img">
+                    <p style="font-style: italic; color:#666;">Los aldehídos tienen carbocatión 1° (menos estable, más reactivo); las cetonas tienen carbocatión 2° (más estable, menos reactivo).</p>
+                </div>
+            </div>
+
+            <!-- SUB: ADICIÓN NUCLEOFÍLICA -->
+            <div id="sub-adicion" class="tab-content">
+                <h3>💥 Adición Nucleofílica al Grupo Carbonilo</h3>
+                <div class="info-box">Los aldehídos y cetonas reaccionan principalmente por <strong>adición nucleofílica</strong>: el nucleófilo ataca al carbono carbonílico electrofílico (sp²), que pasa a sp³, y los electrones π se desplazan al oxígeno formando un anión alcóxido que luego se protona.</div>
+                <div class="img-container">
+                    <img src="mecanismo-adicion-nucleofilica.png" alt="Mecanismo de adición nucleofílica mostrando ataque al carbono carbonílico y formación de intermedio tetraédrico" class="molecule-img">
+                    <p style="font-style: italic; color:#666;">El carbono pasa de sp² (trigonal) a sp³ (tetraédrico).</p>
+                </div>
+                <h3>Hidratación</h3>
+                <div class="bio-box">En agua, aldehídos y cetonas forman <strong>hidratos</strong> (dioles geminales) en equilibrio. En la mayoría de cetonas, el equilibrio favorece la forma carbonilo (ej: acetona 99.9% cetona). <strong>Excepción:</strong> formaldehído existe 99.9% como hidrato.</div>
+                <h3>Formación de Acetales</h3>
+                <div class="pharma-box">Con alcoholes en medio ácido: 1ª molécula forma <strong>hemiacetal</strong> (inestable), 2ª molécula forma <strong>acetal</strong> (estable). Se elimina H₂O. Los acetales son importantes en la estructura de carbohidratos.</div>
+                <h3>Formación de Iminas</h3>
+                <div class="info-box">Con amoníaco o aminas primarias: se forma una <strong>imina</strong> (C=N) vía intermedio de <strong>carbinolamina</strong> que se deshidrata. Velocidad máxima a pH ~4.5.</div>
+            </div>
+
+            <!-- SUB: OXIDACIÓN Y REDUCCIÓN -->
+            <div id="sub-oxidacion" class="tab-content">
+                <h3>🔥 Oxidación de Aldehídos</h3>
+                <div class="info-box"><strong>Los aldehídos se oxidan fácilmente a ácidos carboxílicos</strong>. Las cetonas NO se oxidan (requeriría romper enlace C-C).</div>
+                <div class="table-responsive">
+                    <table>
+                        <tr><th>Reactivo</th><th>Condiciones</th><th>Cambio de color</th><th>Producto</th></tr>
+                        <tr><td><strong>Dicromato (Cr₂O₇²⁻)</strong></td><td>Medio ácido</td><td>Naranja → Verde (Cr³⁺)</td><td>Ácido carboxílico</td></tr>
+                        <tr><td><strong>Permanganato (MnO₄⁻)</strong></td><td>Medio básico/ácido</td><td>Violeta → Marrón</td><td>Ácido carboxílico</td></tr>
+                        <tr><td><strong>Tollens [Ag(NH₃)₂]⁺</strong></td><td>Básico suave</td><td>Espejo de plata</td><td>Ácido carboxílico</td></tr>
+                        <tr><td><strong>Fehling/Benedict (Cu²)</strong></td><td>Básico, calor</td><td>Azul → Rojo ladrillo (Cu₂O)</td><td>Ácido carboxílico</td></tr>
+                    </table>
+                </div>
+                <div class="tip-box"><strong>Reactivo de Tollens:</strong> Específico para aldehídos. Forma "espejo de plata" (Ag⁰) en tubo limpio. Las cetonas no reaccionan.</div>
+                <div class="bio-box"><strong>Fehling/Benedict:</strong> Detectan azúcares reductores (que tienen grupo aldehído libre o α-hidroxicetona). Positivo con aldehídos alifáticos, negativo con aromáticos.</div>
+                <h3>Reducción</h3>
+                <div class="info-box"><strong>Aldehídos → Alcoholes primarios</strong><br><strong>Cetonas → Alcoholes secundarios</strong></div>
+                <div class="pharma-box"><strong>Agentes reductores:</strong>
+                    <ul>
+                        <li><strong>LiAlH₄</strong> (hidruro de litio y aluminio): Muy reactivo, reduce también ésteres, ácidos, amidas. Incompatible con agua/alcoholes.</li>
+                        <li><strong>NaBH₄</strong> (borohidruro de sodio): Selectivo para aldehídos y cetonas. Compatible con agua/alcoholes.</li>
+                        <li><strong>H₂/Pt</strong> (hidrogenación catalítica): Reduce también dobles enlaces C=C si están presentes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SUB: DERIVADOS DE ÁCIDO -->
+            <div id="sub-derivados" class="tab-content">
+                <h3>🧪 Derivados de Ácidos Carboxílicos</h3>
+                <div class="info-box">Los derivados tienen la estructura general <strong>R-CO-Y</strong> donde Y es un grupo saliente: -Cl (cloruro), -OCOR (anhídrido), -OR (éster), -NR₂ (amida), -OH (ácido).</div>
+                <div class="img-container">
+                    <img src="derivados-acido-estructuras.png" alt="Estructuras de cloruro de acilo, anhídrido, éster, amida y ácido carboxílico" class="molecule-img">
+                    <p style="font-style: italic; color:#666;">Todos presentan resonancia con el grupo carbonilo.</p>
+                </div>
+                <h3>Reactividad por Sustitución Nucleofílica Acílica</h3>
+                <div class="tip-box"><strong>Orden de reactividad (de más a menos reactivo):</strong><br>
+                <strong>Cloruro de acilo > Anhídrido > Éster ≈ Ácido > Amida > Ion carboxilato</strong></div>
+                <div class="bio-box"><strong>Explicación:</strong> Depende de la capacidad del grupo Y para donar electrones por resonancia al carbonilo. Mejor donador = más estable = menos reactivo.
+                    <ul>
+                        <li>• <strong>Cloruros:</strong> Cl es electronegativo, poco donador → muy reactivo</li>
+                        <li>• <strong>Amidas:</strong> N es buen donador (menos electronegativo que O) → muy estable, poco reactivo</li>
+                        <li>• <strong>Carboxilato:</strong> O⁻ es donador excelente → muy estable, casi no reacciona</li>
+                    </ul>
+                </div>
+                <div class="problem-box"><strong>Ejercicio:</strong> ¿Por qué los cloruros de acilo son más reactivos que los ésteres?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>El cloro es muy <strong>electronegativo</strong> y ejerce fuerte efecto inductivo atrayendo electrones, pero es <strong>mal donador por resonancia</strong> (sus electrones están en orbital 3p, mal solapamiento con 2p del carbono). Esto hace al carbonilo muy electrofílico. En cambio, el oxígeno del éster es mejor donador por resonancia, estabilizando el carbonilo.</p>
+                </details>
+            </div>
+
+            <!-- SUB: HIDRÓLISIS -->
+            <div id="sub-hidrolisis" class="tab-content">
+                <h3>💧 Hidrólisis de Derivados</h3>
+                <div class="info-box">Todos los derivados de ácido pueden hidrolizarse (reaccionar con agua) para formar el <strong>ácido carboxílico</strong> correspondiente. La facilidad depende de la reactividad del derivado.</div>
+                <h3>Hidrólisis de Cloruros y Anhídridos</h3>
+                <div class="pharma-box"><strong>Muy rápida</strong>, incluso con humedad ambiental. Por esto los cloruros de acilo deben manejarse en condiciones anhidras. Ej: R-COCl + H₂O → R-COOH + HCl</div>
+                <h3>Hidrólisis de Ésteres (Saponificación)</h3>
+                <div class="bio-box"><strong>Hidrólisis básica:</strong> Éster + OH⁻ → Carboxilato + Alcohol. Irreversible. Es la reacción para hacer <strong>jabón</strong> a partir de grasas (ésteres de ácidos grasos con glicerol).</div>
+                <div class="img-container">
+                    <img src="saponificacion-jabon.png" alt="Reacción de saponificación mostrando hidrólisis básica de triglicérido para formar jabón (sales de ácidos grasos) y glicerol" class="molecule-img">
+                    <p style="font-style: italic; color:#666;">Las grasas son ésteres de ácidos carboxílicos de cadena larga con glicerol.</p>
+                </div>
+                <h3>Hidrólisis de Amidas</h3>
+                <div class="info-box"><strong>Requiere condiciones drásticas:</strong>
+                    <ul>
+                        <li>• <strong>Ácida:</strong> HCl 6M, calor prolongado → Ácido carboxílico + Amina protonada</li>
+                        <li>• <strong>Básica:</strong> OH⁻, calor → Carboxilato + Amina</li>
+                    </ul>
+                    Las amidas son los derivados <strong>más estables</strong> y difíciles de hidrolizar.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section id="mapa" class="section">
+    <div class="card">
+        <h2>🗺️ Mapa Conceptual Interactivo</h2>
+        <p style="margin-bottom:1rem;">Haz <strong>clic en cada nodo</strong> para desplegar u ocultar sus ramas.</p>
+        <div class="map-container">
+            <ul class="map-tree">
+                <li class="has-children">
+                    <div class="map-node root" onclick="toggleMap(this)">🧪 Aldehídos, Cetonas y Ácidos Carboxílicos (Capítulo 9)</div>
+                    <ul>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">⚛️ Grupo Carbonilo</div>
+                            <ul>
+                                <li><span class="map-leaf">C=O polarizado: Cδ⁺ (electrofílico), Oδ⁻</span></li>
+                                <li><span class="map-leaf">Carbono sp², geometría trigonal plana</span></li>
+                                <li><span class="map-leaf">Enlace π por solapamiento de orbitales p</span></li>
+                                <li><span class="map-leaf">Más corto y fuerte que C=C por polarización</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">🔬 Aldehídos vs Cetonas</div>
+                            <ul>
+                                <li><span class="map-leaf">Aldehídos: R-CHO (más reactivos)</span></li>
+                                <li><span class="map-leaf">Cetonas: R-CO-R' (menos reactivos)</span></li>
+                                <li><span class="map-leaf">Aldehídos: menor impedimento estérico, más polarizados</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">💥 Adición Nucleofílica</div>
+                            <ul>
+                                <li><span class="map-leaf">Hidratación: forma hidrato (diol geminal)</span></li>
+                                <li><span class="map-leaf">Acetales: con 2 alcoholes en medio ácido</span></li>
+                                <li><span class="map-leaf">Iminas: con aminas primarias (pH 4.5 óptimo)</span></li>
+                                <li><span class="map-leaf">Cianohidrinas: con CN⁻ (reversible)</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">🔥 Oxidación</div>
+                            <ul>
+                                <li><span class="map-leaf">Aldehídos → Ácidos carboxílicos</span></li>
+                                <li><span class="map-leaf">Cetonas NO se oxidan</span></li>
+                                <li><span class="map-leaf">Tollens: espejo de plata (Ag⁰)</span></li>
+                                <li><span class="map-leaf">Fehling/Benedict: Cu₂O rojo ladrillo</span></li>
+                                <li><span class="map-leaf">Dicromato: naranja → verde</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">❄️ Reducción</div>
+                            <ul>
+                                <li><span class="map-leaf">Aldehídos → Alcoholes primarios</span></li>
+                                <li><span class="map-leaf">Cetonas → Alcoholes secundarios</span></li>
+                                <li><span class="map-leaf">LiAlH₄: muy reactivo, reduce todo</span></li>
+                                <li><span class="map-leaf">NaBH₄: selectivo, suave</span></li>
+                                <li><span class="map-leaf">H₂/Pt: hidrogenación catalítica</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)"> Derivados de Ácido</div>
+                            <ul>
+                                <li><span class="map-leaf">Cloruro de acilo (más reactivo)</span></li>
+                                <li><span class="map-leaf">Anhídrido</span></li>
+                                <li><span class="map-leaf">Éster</span></li>
+                                <li><span class="map-leaf">Amida (más estable)</span></li>
+                                <li><span class="map-leaf">Orden: Cloruro > Anhídrido > Éster > Amida</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">💧 Hidrólisis</div>
+                            <ul>
+                                <li><span class="map-leaf">Cloruros/Anhídridos: muy rápida</span></li>
+                                <li><span class="map-leaf">Ésteres: saponificación (básica)</span></li>
+                                <li><span class="map-leaf">Amidas: requiere condiciones drásticas</span></li>
+                                <li><span class="map-leaf">Todos forman ácido carboxílico</span></li>
+                            </ul>
+                        </li>
+                        <li class="has-children"><div class="map-node branch" onclick="toggleMap(this)">🏥 Aplicaciones médicas</div>
+                            <ul>
+                                <li><span class="map-leaf">Formaldehído: desinfectante, tóxico</span></li>
+                                <li><span class="map-leaf">Acetaldehído: metabolito del etanol</span></li>
+                                <li><span class="map-leaf">Cuerpos cetónicos: diabetes, ayuno</span></li>
+                                <li><span class="map-leaf">AINEs: ácidos carboxílicos (aspirina)</span></li>
+                                <li><span class="map-leaf">Antibióticos β-lactámicos: amidas</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FLASHCARDS ============ -->
+<section id="flashcards" class="section">
+    <div class="card">
+        <h2>🃏 Flashcards de Estudio</h2>
+        <p>Haz <strong>clic en la tarjeta</strong> para voltearla y ver la respuesta. Luego califícate con honestidad.</p>
+        <div class="fc-stats">
+            <span class="fc-stat good">✅ Buenas: <span id="fc-good">0</span></span>
+            <span class="fc-stat bad">❌ Malas: <span id="fc-bad">0</span></span>
+            <span class="fc-stat pending">⏳ Pendientes: <span id="fc-left">0</span></span>
+            <span class="fc-stat total">📈 Historial: <span id="fc-hist">0 ✓ / 0 ✗</span></span>
+        </div>
+        <div class="fc-progress"><div class="fc-progress-bar" id="fc-bar"></div></div>
+        <div class="flashcard-scene" id="fc-scene">
+            <div class="flashcard" id="fc-card" onclick="flipCard()">
+                <div class="fc-face fc-front"><div class="fc-label">PREGUNTA</div><div id="fc-question"></div><span class="fc-hint">Clic para voltear ✨</span></div>
+                <div class="fc-face fc-back"><div class="fc-label">RESPUESTA</div><div id="fc-answer"></div></div>
+            </div>
+        </div>
+        <div class="fc-controls" id="fc-controls">
+            <button class="fc-btn good" id="btn-fc-good" onclick="gradeCard(true)" disabled>✅ La sabía</button>
+            <button class="fc-btn bad" id="btn-fc-bad" onclick="gradeCard(false)" disabled>❌ No la sabía</button>
+        </div>
+        <div id="fc-summary" class="calc-result" style="max-width:720px;margin:1rem auto;"></div>
+        <div style="text-align:center;">
+            <button class="calc-button" onclick="resetFlashcards()">🔄 Reiniciar Flashcards</button><br>
+            <button class="fc-link" onclick="borrarHistorial()">Borrar historial acumulado</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ HERRAMIENTAS ============ -->
+<section id="calculadoras" class="section">
+    <div class="card">
+        <h2>🧮 Herramientas Interactivas</h2>
+        <div id="herramientas-tabs" class="tab-group">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('herramientas-tabs','calc-oxidacion', this)">🔍 Identificador de Oxidación</button>
+                <button class="tab" onclick="showTab('herramientas-tabs','calc-derivados', this)">🧪 Reactividad de Derivados</button>
+                <button class="tab" onclick="showTab('herramientas-tabs','calc-reduccion', this)">❄️ Producto de Reducción</button>
+            </div>
+
+            <div id="calc-oxidacion" class="tab-content active">
+                <div class="calculator">
+                    <div class="calc-title">🔍 ¿Se oxida este compuesto?</div>
+                    <div class="calc-input-group"><label>Selecciona un compuesto:</label>
+                        <select id="oxidacion-select">
+                            <option value="0">Butanal (aldehído)</option>
+                            <option value="1">2-Butanona (cetona)</option>
+                            <option value="2">Benzaldehído</option>
+                            <option value="3">Acetofenona</option>
+                            <option value="4">Formaldehído</option>
+                            <option value="5">Ciclohexanona</option>
+                        </select>
+                    </div>
+                    <button class="calc-button" onclick="verificarOxidacion()">Verificar oxidación</button>
+                    <div id="oxidacion-resultado" class="calc-result"></div>
+                    <div class="tip-box" style="margin-top:2rem;"><strong>Regla:</strong> Los aldehídos SI se oxidan a ácidos carboxílicos. Las cetonas NO se oxidan (requeriría romper enlace C-C).</div>
+                </div>
+            </div>
+
+            <div id="calc-derivados" class="tab-content">
+                <div class="calculator">
+                    <div class="calc-title">🧪 Orden de reactividad de derivados</div>
+                    <div class="calc-input-group"><label>Selecciona un derivado:</label>
+                        <select id="derivados-select">
+                            <option value="0">Cloruro de acetilo</option>
+                            <option value="1">Anhídrido acético</option>
+                            <option value="2">Acetato de etilo (éster)</option>
+                            <option value="3">Acetamida</option>
+                            <option value="4">Ion acetato</option>
+                        </select>
+                    </div>
+                    <button class="calc-button" onclick="verificarReactividad()">Verificar reactividad</button>
+                    <div id="derivados-resultado" class="calc-result"></div>
+                </div>
+            </div>
+
+            <div id="calc-reduccion" class="tab-content">
+                <div class="calculator">
+                    <div class="calc-title">️ Producto de reducción</div>
+                    <div class="calc-input-group"><label>Selecciona el compuesto a reducir:</label>
+                        <select id="reduccion-select">
+                            <option value="0">Propanal</option>
+                            <option value="1">2-Butanona</option>
+                            <option value="2">Benzaldehído</option>
+                            <option value="3">Acetona</option>
+                            <option value="4">3-Pentanona</option>
+                        </select>
+                    </div>
+                    <button class="calc-button" onclick="verificarReduccion()">Verificar producto</button>
+                    <div id="reduccion-resultado" class="calc-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ APLICACIONES ============ -->
+<section id="aplicaciones" class="section">
+    <div class="card">
+        <h2>🏥 Aplicaciones Profesionales</h2>
+        <div id="aplicaciones-tabs" class="tab-group">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('aplicaciones-tabs','aplic-medicina', this)">🩺 Medicina</button>
+                <button class="tab" onclick="showTab('aplicaciones-tabs','aplic-farma', this)"> Farmacología</button>
+                <button class="tab" onclick="showTab('aplicaciones-tabs','aplic-bioq', this)">🧬 Bioquímica</button>
+            </div>
+
+            <div id="aplic-medicina" class="tab-content active">
+                <div class="bio-box"><strong>Enfoque clínico:</strong> los compuestos carbonílicos son fundamentales en metabolismo y toxicología.</div>
+                <div class="problem-box"><strong>📋 Problema 1 — Cuerpos cetónicos en diabetes:</strong> En cetoacidosis diabética, ¿qué cetonas se elevan y por qué?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>Se elevan <strong>acetona, acetoacetato y β-hidroxibutirato</strong>. En ausencia de insulina, el cuerpo usa grasas como energía, produciendo cuerpos cetónicos en el hígado. La acetona es una cetona que se exhala (aliento cetósico).</p>
+                </details>
+                <div class="problem-box"><strong>📋 Problema 2 — Metabolismo del etanol:</strong> El etanol se oxida a acetaldehído. ¿Por qué el acetaldehído causa resaca?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>El <strong>acetaldehído</strong> es un <strong>aldehído tóxico</strong> (más tóxico que el etanol). Se acumula cuando la aldehído deshidrogenasa no puede procesarlo rápido enough. Causa vasodilatación, náuseas, taquicardia.</p>
+                </details>
+                <div class="problem-box"><strong>📋 Problema 3 — Formaldehído como desinfectante:</strong> ¿Por qué el formaldehído es tan reactivo y tóxico?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>El <strong>formaldehído</strong> (HCHO) es el <strong>aldehído más reactivo</strong> (sin grupos alquilo que estabilicen). Reacciona con grupos amino de proteínas y ADN, entrecruzándolos (fijación). Es carcinógeno.</p>
+                </details>
+            </div>
+
+            <div id="aplic-farma" class="tab-content">
+                <div class="pharma-box"><strong>Enfoque farmacológico:</strong> muchos fármacos son derivados de ácido carboxílico.</div>
+                <div class="problem-box"><strong>📋 Problema 1 — AINEs (aspirina, ibuprofeno):</strong> ¿Qué grupo funcional tienen en común?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>Todos tienen un <strong>ácido carboxílico</strong> (-COOH). Este grupo es esencial para su actividad antiinflamatoria (interactúa con COX). La aspirina es un éster (acetil salicílico) que se hidroliza in vivo.</p>
+                </details>
+                <div class="problem-box"><strong>📋 Problema 2 — Antibióticos β-lactámicos:</strong> Penicilinas y cefalosporinas tienen una amida cíclica. ¿Por qué son efectivos?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>El anillo <strong>β-lactámico</strong> (amida cíclica de 4 miembros) es <strong>muy reactivo</strong> por tensión de anillo. Reacciona con enzimas transpeptidasas bacterianas (inhibición irreversible), bloqueando síntesis de pared celular.</p>
+                </details>
+                <div class="problem-box"><strong>📋 Problema 3 — Prodrugs éster:</strong> ¿Por qué algunos fármacos se administran como ésteres?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>Los <strong>ésteres</strong> son más <strong>lipofílicos</strong> que los ácidos carboxílicos, mejorando absorción. Una vez absorbidos, las esterasas los hidrolizan liberando el fármaco activo (ácido).</p>
+                </details>
+            </div>
+
+            <div id="aplic-bioq" class="tab-content">
+                <div class="bio-box"><strong>Enfoque molecular:</strong> los grupos carbonilo son ubicuos en bioquímica.</div>
+                <div class="problem-box"><strong>📋 Problema 1 — Glucosa y carbohidratos:</strong> La glucosa tiene un grupo aldehído. ¿Por qué no reacciona como tal?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>La glucosa existe principalmente como <strong>hemiacetal cíclico</strong> (piranosa). El aldehído reacciona intramolecularmente con un OH formando un anillo de 6 miembros. Solo una pequeña fracción está como aldehído libre (azúcar reductor).</p>
+                </details>
+                <div class="problem-box"><strong>📋 Problema 2 — Enlaces peptídicos:</strong> Las proteínas tienen enlaces amida. ¿Por qué son estables?</div>
+                <details class="solution"><summary>🔍 Ver solución</summary>
+                    <p>Las <strong>amidas</strong> son los derivados de ácido <strong>más estables</strong> por fuerte resonancia (el N dona electrones al carbonilo). Requieren enzimas (proteasas) o condiciones drásticas para hidrolizarse.</p>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ MNEMOTECNIAS ============ -->
+<section id="mnemotecnias" class="section">
+    <div class="card">
+        <h2> Mnemotecnias y Reglas Mnemotécnicas</h2>
+        <div class="mnemonic-card"><div class="mnemonic-title">🔥 "Aldehídos se oxidan, cetonas no"</div><p><strong>Aldehídos</strong> → ácidos carboxílicos (Tollens, Fehling, dicromato). <strong>Cetonas</strong> NO se oxidan (rompería C-C).</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title">📊 "Reactividad de derivados: CAEA"</div><p><strong>C</strong>loruro > <strong>A</strong>nhídrido > <strong>É</strong>ster > <strong>A</strong>mida. De más a menos reactivo.</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title">️ "Reducción: 1° y 2°"</div><p><strong>Aldehídos</strong> → alcoholes <strong>primarios</strong> (1°). <strong>Cetonas</strong> → alcoholes <strong>secundarios</strong> (2°).</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title">🥽 "Tollens: espejo de plata"</div><p>Reactivo de Tollens [Ag(NH₃)₂]⁺ con aldehídos forma <strong>espejo de plata</strong> (Ag metálico). Cetonas: no reacciona.</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title">🧱 "Fehling/Benedict: rojo ladrillo"</div><p>Cu²⁺ (azul) + aldehído → Cu₂O (óxido cuproso, <strong>rojo ladrillo</strong>). Detecta azúcares reductores.</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title"> "Dicromato: naranja a verde"</div><p>Cr₂O₇²⁻ (naranja) oxida aldehídos → Cr³⁺ (verde). Cambio de color característico.</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title"> "Hidratación: formaldehído例外"</div><p>La mayoría de cetonas/aldehídos: equilibrio favorece carbonilo. <strong>Excepción:</strong> formaldehído 99.9% hidrato.</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title"> "LiAlH₄ vs NaBH₄"</div><p><strong>LiAlH₄</strong>: muy reactivo, reduce TODO (ácidos, ésteres, amidas). <strong>NaBH₄</strong>: suave, selectivo (solo aldehídos/cetonas).</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title">🔬 "Amidas: más estables"</div><p>Las <strong>amidas</strong> son los derivados de ácido <strong>más estables</strong> (N es buen donador). Hidrólisis requiere condiciones drásticas.</p></div>
+        <div class="mnemonic-card"><div class="mnemonic-title"> "Saponificación = jabón"</div><p>Hidrólisis <strong>básica</strong> de ésteres (grasas) → <strong>jabón</strong> (sales de ácidos grasos) + glicerol. Irreversible.</p></div>
+    </div>
+</section>
+
+<!-- ============ GLOSARIO ============ -->
+<section id="glosario" class="section">
+    <div class="card">
+        <h2>📖 Glosario Interactivo</h2>
+        <p style="margin-bottom:1.5rem;">Haz clic en cada término para ver su definición:</p>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Grupo Carbonilo</strong><div class="glossary-definition">C=O, carbono sp² unido a oxígeno por doble enlace. Polarizado: Cδ⁺ (electrofílico), Oδ⁻.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Aldehído</strong><div class="glossary-definition">Compuesto R-CHO donde el carbono carbonílico está unido al menos a un H. Más reactivo que cetonas.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Cetona</strong><div class="glossary-definition">Compuesto R-CO-R' donde el carbono carbonílico está unido a dos grupos alquilo/arilo.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Adición Nucleofílica</strong><div class="glossary-definition">Mecanismo donde un nucleófilo ataca al carbono carbonílico (sp² → sp³), formando intermedio tetraédrico.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Hidrato</strong><div class="glossary-definition">Diol geminal formado por adición de agua a un carbonilo. Equilibrio generalmente favorece carbonilo.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Acetal</strong><div class="glossary-definition">Compuesto formado por reacción de carbonilo con 2 alcoholes en medio ácido. Estable.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Imima</strong><div class="glossary-definition">Compuesto C=N formado por reacción de carbonilo con amina primaria. Vía carbinolamina.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Reactivo de Tollens</strong><div class="glossary-definition">[Ag(NH₃)₂]⁺. Oxida aldehídos a ácidos, reduciendo Ag⁺ a Ag⁰ (espejo de plata). Específico para aldehídos.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Reactivo de Fehling/Benedict</strong><div class="glossary-definition">Cu² complejado (tartrato/citrato). Oxida aldehídos alifáticos a ácidos, formando Cu₂O rojo ladrillo.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Cloruro de Acilo</strong><div class="glossary-definition">R-COCl. Derivado de ácido más reactivo. Cl es mal donador por resonancia.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Anhídrido</strong><div class="glossary-definition">R-CO-O-CO-R. Derivado de ácido muy reactivo. Dos carbonilos comparten un oxígeno.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Éster</strong><div class="glossary-definition">R-CO-OR'. Derivado de ácido moderadamente reactivo. Hidrólisis básica = saponificación.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Amida</strong><div class="glossary-definition">R-CO-NR₂. Derivado de ácido más estable. N es buen donador por resonancia. Enlace peptídico es una amida.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Saponificación</strong><div class="glossary-definition">Hidrólisis básica de ésteres (grasas) para formar jabón (sales de ácidos grasos) y glicerol.</div></div>
+        <div class="glossary-term" onclick="toggleDefinition(this)"><strong>Cuerpos Cetónicos</strong><div class="glossary-definition">Acetona, acetoacetato, β-hidroxibutirato. Producidos en ayuno/diabetes. La acetona es una cetona.</div></div>
+    </div>
+</section>
+
+<!-- ============ ERRORES ============ -->
+<section id="errores" class="section">
+    <div class="card">
+        <h2>️ Errores Comunes de Estudiantes</h2>
+        <div class="error-card"><div class="error-title">❌ Error 1: Creer que las cetonas se oxidan</div><p><strong>Error:</strong> proponer oxidación de cetonas con KMnO₄ o K₂Cr₂O₇.</p><div class="correction">✓ Corrección: Las <strong>cetonas NO se oxidan</strong> con oxidantes comunes. Requeriría romper un enlace C-C (solo ocurre con oxidantes muy fuertes y calor extremo).</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 2: Confundir reactividad de aldehídos y cetonas</div><p><strong>Error:</strong> asumir que cetonas son más reactivas.</p><div class="correction">✓ Corrección: Los <strong>aldehídos son más reactivos</strong> que las cetonas (menor impedimento estérico, carbono más polarizado).</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 3: Invertir orden de reactividad de derivados</div><p><strong>Error:</strong> amida > éster > anhídrido > cloruro.</p><div class="correction">✓ Corrección: El orden correcto es <strong>cloruro > anhídrido > éster > amida</strong> (de más a menos reactivo).</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 4: Esperar que Tollens reaccione con cetonas</div><p><strong>Error:</strong> usar Tollens para identificar cetonas.</p><div class="correction">✓ Corrección: <strong>Tollens es específico para aldehídos</strong>. Las cetonas no dan espejo de plata.</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 5: Creer que Fehling detecta todos los aldehídos</div><p><strong>Error:</strong> asumir que benzaldehído da positivo.</p><div class="correction">✓ Corrección: <strong>Fehling/Benedict solo detectan aldehídos alifáticos</strong>. Los aromáticos (benzaldehído) dan negativo.</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 6: Usar LiAlH₄ cuando NaBH₄ es suficiente</div><p><strong>Error:</strong> usar LiAlH₄ para reducir solo un aldehído/cetona.</p><div class="correction">✓ Corrección: <strong>NaBH₄ es más selectivo</strong> y seguro. LiAlH es muy reactivo y peligroso (reacciona violentamente con agua).</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 7: Olvidar que la saponificación es irreversible</div><p><strong>Error:</strong> proponer equilibrio en hidrólisis básica de ésteres.</p><div class="correction">✓ Corrección: La <strong>saponificación es irreversible</strong> porque el carboxilato formado es muy estable y no reacciona con el alcohol.</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 8: Creer que las amidas se hidrolizan fácilmente</div><p><strong>Error:</strong> proponer hidrólisis de amidas en condiciones suaves.</p><div class="correction">✓ Corrección: Las <strong>amidas requieren condiciones drásticas</strong> (HCl 6M, calor prolongado o NaOH concentrado, calor). Son los derivados más estables.</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 9: Confundir hemiacetal con acetal</div><p><strong>Error:</strong> llamar acetal a un hemiacetal.</p><div class="correction">✓ Corrección: <strong>Hemiacetal</strong>: 1 alcohol + carbonilo (inestable). <strong>Acetal</strong>: 2 alcoholes + carbonilo (estable).</div></div>
+        <div class="error-card"><div class="error-title">❌ Error 10: No considerar la resonancia en derivados</div><p><strong>Error:</strong> no explicar reactividad por resonancia.</p><div class="correction">✓ Corrección: La <strong>reactividad depende de la resonancia</strong>: mejor donador Y = más estable = menos reactivo. N (amida) es mejor donador que O (éster), que es mejor que Cl (cloruro).</div></div>
+        <div class="tip-box" style="margin-top:2rem;"><strong>💡 Consejo de estudio:</strong> ante cualquier compuesto carbonílico pregúntate:
+            <ol>
+                <li>¿Es aldehído o cetona? (reactividad diferente)</li>
+                <li>¿Se puede oxidar? (solo aldehídos)</li>
+                <li>¿Es derivado de ácido? ¿Cuál? (orden de reactividad: CAEA)</li>
+                <li>¿Qué producto da con reducción? (1° o 2° alcohol)</li>
+            </ol>
+            Con eso dominas el Capítulo 9.</div>
+    </div>
+</section>
+
+<!-- ============ BIBLIOGRAFÍA ============ -->
+<section id="bibliografia" class="section">
+    <div class="card">
+        <h2>📚 Fuentes Bibliográficas Universitarias</h2>
+        <h3>Libros de Texto Principales</h3>
+        <div class="info-box"><strong>1. Wade, L.G. — "Química Orgánica"</strong><br>• <strong>Caps. 18-19:</strong> Cetonas y aldehídos; ácidos carboxílicos y derivados<br>• <strong>Cap. 21:</strong> Química de los derivados de ácido carboxílico<br>• 9na edición, Pearson, 2017</div>
+        <div class="info-box"><strong>2. McMurry, J. — "Química Orgánica"</strong><br>• <strong>Caps. 19-21:</strong> Aldehídos y cetonas; ácidos carboxílicos y derivados<br>• Reacciones de adición nucleofílica, oxidación-reducción<br>• 9na edición, Cengage Learning, 2016</div>
+        <div class="info-box"><strong>3. Solomons, T.W.G. & Fryhle, C.B. — "Química Orgánica"</strong><br>• <strong>Caps. 15-17:</strong> Aldehídos y cetonas; ácidos carboxílicos<br>• Derivados de ácido: cloruros, anhídridos, ésteres, amidas<br>• 10ma edición, Wiley, 2011</div>
+        <h3>Recursos Especializados</h3>
+        <div class="bio-box"><div><strong>4. Clayden, J. — "Organic Chemistry"</strong><br>• Caps. de carbonilos, adición nucleofílica y derivados de ácido • 2da ed., Oxford, 2012</div></div>
+        <div class="pharma-box"><div><strong>5. Patrick, G.L. — "An Introduction to Medicinal Chemistry"</strong><br>• Metabolismo de aldehídos, AINEs, antibióticos β-lactámicos • 6ta ed., Oxford, 2017</div></div>
+        <h3>Artículos y Recursos en Línea</h3>
+        <div class="info-box"><strong>6. PubChem (pubchem.ncbi.nlm.nih.gov):</strong> propiedades de aldehídos, cetonas, ácidos carboxílicos y derivados.</div>
+        <div class="tip-box"><strong>7. MolView (molview.org):</strong> visualiza estructuras tridimensionales de grupos carbonilo y derivados.</div>
+    </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="section">
+    <div class="card">
+        <h2>🎯 Quiz de Autoevaluación</h2>
+        <p>Cada ciclo muestra <strong>10 preguntas al azar</strong> de una base de <strong>30</strong>. Cada vez que entras a esta pestaña o terminas un ciclo se sortean preguntas nuevas.</p>
+        <div class="quiz-stats">
+            <span class="quiz-stat" id="q-progress-text">Pregunta 1 de 10 • Aciertos: 0</span>
+            <span class="quiz-stat" id="q-history" style="background:#6c757d;"></span>
+        </div>
+        <div class="quiz-progress"><div class="quiz-progress-bar-bg"><div class="quiz-progress-bar" id="q-bar"></div></div></div>
+        <div id="quiz-container"></div>
+        <div id="quiz-result" class="calc-result" style="max-width:720px;margin:1rem auto;"></div>
+        <div style="text-align:center; margin-top:2rem;">
+            <button class="calc-button" onclick="startNewCycle()">🔄 Reiniciar Quiz (nuevo ciclo aleatorio)</button>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<footer class="footer">
+    <p style="font-size:1.2rem; margin-bottom:1rem;">🎓 Universidad Peruana Cayetano Heredia</p>
+    <p>Facultad de Medicina • Departamento de Ciencias Básicas</p>
+    <p style="margin-top:1rem; font-style:italic;">"La química orgánica es el lenguaje de la vida"</p>
+    <p style="margin-top:2rem; font-size:0.9rem;">© 2026 - Material educativo para estudiantes de medicina</p>
+</footer>
+
+<script>
+    // ================= NAVEGACIÓN =================
+    function showSection(sectionId, btn) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        if (sectionId === 'quiz') startNewCycle();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function showTab(groupId, tabId, btn) {
+        const g = document.getElementById(groupId);
+        g.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        g.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        if (btn) btn.classList.add('active');
+    }
+    function toggleMap(node){ node.parentElement.classList.toggle('open'); }
+    function toggleDefinition(el){
+        const d = el.querySelector('.glossary-definition');
+        d.classList.toggle('show');
+        el.style.background = d.classList.contains('show') ? '#fff9e6' : 'var(--white)';
+    }
+    
+    // ================= FLASHCARDS =================
+    const flashcards = [
+     { q:'¿Qué es el grupo carbonilo?', a:'C=O, donde el carbono tiene hibridación sp² y está polarizado (Cδ⁺ electrofílico, Oδ⁻).' },
+     { q:'Diferencia entre aldehído y cetona:', a:'Aldehído: R-CHO (carbonilo unido a H). Cetona: R-CO-R\' (carbonilo unido a 2 grupos alquilo).' },
+     { q:'¿Cuál es más reactivo: aldehído o cetona?', a:'El aldehído es más reactivo (menor impedimento estérico, carbono más polarizado).' },
+     { q:'Mecanismo de reacción de aldehídos y cetonas:', a:'Adición nucleofílica: el nucleófilo ataca al carbono carbonílico (sp² → sp³).' },
+     { q:'¿Qué es un hidrato?', a:'Diol geminal formado por adición de agua a un carbonilo. Equilibrio generalmente favorece el carbonilo.' },
+     { q:'¿Qué es un acetal?', a:'Compuesto formado por reacción de carbonilo con 2 alcoholes en medio ácido. Es estable.' },
+     { q:'Producto de oxidación de aldehídos:', a:'Ácido carboxílico (R-COOH).' },
+     { q:'¿Se oxidan las cetonas?', a:'NO. Las cetonas no se oxidan con oxidantes comunes (requeriría romper enlace C-C).' },
+     { q:'Reactivo de Tollens:', a:'[Ag(NH)₂]⁺. Oxida aldehídos formando espejo de plata (Ag⁰). Específico para aldehídos.' },
+     { q:'Reactivo de Fehling/Benedict:', a:'Cu²⁺ complejado. Oxida aldehídos alifáticos formando Cu₂O rojo ladrillo.' },
+     { q:'Cambio de color con dicromato:', a:'Naranja (Cr₂O₇²⁻) → Verde (Cr³⁺).' },
+     { q:'Producto de reducción de aldehídos:', a:'Alcohol primario (R-CH₂OH).' },
+     { q:'Producto de reducción de cetonas:', a:'Alcohol secundario (R₂CHOH).' },
+     { q:'Diferencia entre LiAlH₄ y NaBH₄:', a:'LiAlH₄: muy reactivo, reduce todo (ácidos, ésteres, amidas). NaBH₄: selectivo, solo aldehídos/cetonas.' },
+     { q:'Orden de reactividad de derivados de ácido:', a:'Cloruro de acilo > Anhídrido > Éster > Amida (de más a menos reactivo).' },
+     { q:'¿Por qué los cloruros de acilo son más reactivos?', a:'Cl es electronegativo y mal donador por resonancia, haciendo al carbonilo muy electrofílico.' },
+     { q:'¿Por qué las amidas son más estables?', a:'El N es buen donador por resonancia (menos electronegativo que O), estabilizando el carbonilo.' },
+     { q:'¿Qué es la saponificación?', a:'Hidrólisis básica de ésteres (grasas) formando jabón (sales de ácidos grasos) y glicerol.' },
+     { q:'Hidrólisis de cloruros de acilo:', a:'Muy rápida, incluso con humedad ambiental. Forma ácido carboxílico + HCl.' },
+     { q:'Hidrólisis de amidas:', a:'Requiere condiciones drásticas (HCl 6M, calor o NaOH concentrado, calor). Son los derivados más estables.' },
+     { q:'¿Qué es una imina?', a:'Compuesto C=N formado por reacción de carbonilo con amina primaria vía carbinolamina.' },
+     { q:'pH óptimo para formación de iminas:', a:'pH ~4.5 (débilmente ácido).' },
+     { q:'Formaldehído en agua:', a:'Existe 99.9% como hidrato (excepción a la regla general).' },
+     { q:'Acetona en agua:', a:'Existe 99.9% como cetona (no hidratada).' },
+     { q:'¿Qué son los cuerpos cetónicos?', a:'Acetona, acetoacetato y β-hidroxibutirato. Producidos en ayuno/diabetes.' },
+     { q:'Acetaldehído:', a:'Aldehído tóxico, metabolito del etanol. Causa síntomas de resaca.' },
+     { q:'AINEs (aspirina, ibuprofeno):', a:'Tienen grupo ácido carboxílico (-COOH) esencial para su actividad.' },
+     { q:'Antibióticos β-lactámicos:', a:'Tienen amida cíclica de 4 miembros (muy reactiva por tensión de anillo).' },
+     { q:'Prodrugs éster:', a:'Ésteres más lipofílicos que se hidrolizan in vivo liberando el fármaco activo (ácido).' },
+     { q:'Enlace peptídico:', a:'Es una amida. Muy estable por resonancia. Requiere enzimas (proteasas) para hidrolizarse.' }
+    ];
+    let fcIndex=0, fcFlipped=false, fcGood=0, fcBad=0, fcDone=false;
+    function fcUpdateStats(){
+        document.getElementById('fc-good').textContent=fcGood;
+        document.getElementById('fc-bad').textContent=fcBad;
+        document.getElementById('fc-left').textContent=Math.max(0,flashcards.length-fcIndex);
+        const tg=parseInt(localStorage.getItem('fc9TotalGood')||'0',10), tb=parseInt(localStorage.getItem('fc9TotalBad')||'0',10);
+        document.getElementById('fc-hist').textContent=tg+' ✓ / '+tb+' ✗';
+        document.getElementById('fc-bar').style.width=(fcIndex/flashcards.length*100)+'%';
+    }
+    function fcRenderCard(){
+        document.getElementById('fc-card').classList.remove('flipped'); fcFlipped=false;
+        document.getElementById('fc-question').textContent=flashcards[fcIndex].q;
+        document.getElementById('fc-answer').textContent=flashcards[fcIndex].a;
+        document.getElementById('btn-fc-good').disabled=true; document.getElementById('btn-fc-bad').disabled=true;
+        fcUpdateStats();
+    }
+    function flipCard(){
+        if(fcDone) return;
+        const c=document.getElementById('fc-card'); c.classList.toggle('flipped');
+        fcFlipped=c.classList.contains('flipped');
+        document.getElementById('btn-fc-good').disabled=!fcFlipped;
+        document.getElementById('btn-fc-bad').disabled=!fcFlipped;
+    }
+    function gradeCard(ok){
+        if(!fcFlipped||fcDone) return;
+        if(ok){ fcGood++; localStorage.setItem('fc9TotalGood',String(parseInt(localStorage.getItem('fc9TotalGood')||'0',10)+1)); }
+        else { fcBad++; localStorage.setItem('fc9TotalBad',String(parseInt(localStorage.getItem('fc9TotalBad')||'0',10)+1)); }
+        fcIndex++;
+        if(fcIndex<flashcards.length) { fcRenderCard(); } else { fcFinish(); }
+    }
+    function fcFinish(){
+        fcDone=true;
+        document.getElementById('fc-scene').style.display='none';
+        document.getElementById('fc-controls').style.display='none';
+        const pct=Math.round(fcGood/(fcGood+fcBad)*100);
+        const msg=pct>=80?'🏆 ¡Excelente! Dominas el capítulo 9.':(pct>=60?'💪 ¡Bien! Repasa las que fallaste.':'📚 Repasa Conceptos, Mapa y Errores Comunes.');
+        const s=document.getElementById('fc-summary');
+        s.innerHTML='<strong>📊 Resumen:</strong> ✅ '+fcGood+' • ❌ '+fcBad+' • Precisión <strong>'+pct+'%</strong><br>'+msg;
+        s.classList.add('show'); fcUpdateStats();
+    }
+    function resetFlashcards(){
+        fcIndex=0; fcGood=0; fcBad=0; fcDone=false;
+        document.getElementById('fc-scene').style.display='block';
+        document.getElementById('fc-controls').style.display='flex';
+        document.getElementById('fc-summary').classList.remove('show');
+        fcRenderCard();
+    }
+    function borrarHistorial(){ localStorage.removeItem('fc9TotalGood'); localStorage.removeItem('fc9TotalBad'); fcUpdateStats(); }
+    
+    // ================= HERRAMIENTAS =================
+    const oxidacionData = [
+     { c:'Butanal (aldehído)', r:'SI se oxida', p:'Ácido butanoico', x:'Los aldehídos se oxidan fácilmente a ácidos carboxílicos.' },
+     { c:'2-Butanona (cetona)', r:'NO se oxida', p:'No hay reacción', x:'Las cetonas NO se oxidan con oxidantes comunes (requeriría romper enlace C-C).' },
+     { c:'Benzaldehído', r:'SI se oxida', p:'Ácido benzoico', x:'Aldehído aromático se oxida a ácido carboxílico aromático.' },
+     { c:'Acetofenona', r:'NO se oxida', p:'No hay reacción', x:'Cetona aromática no se oxida.' },
+     { c:'Formaldehído', r:'SI se oxida', p:'Ácido fórmico (HCOOH)', x:'Formaldehído (HCHO) se oxida a ácido fórmico.' },
+     { c:'Ciclohexanona', r:'NO se oxida', p:'No hay reacción', x:'Cetona cíclica no se oxida.' }
+    ];
+    function verificarOxidacion(){
+        const d=oxidacionData[parseInt(document.getElementById('oxidacion-select').value,10)];
+        const r=document.getElementById('oxidacion-resultado');
+        r.innerHTML='<strong>'+d.c+'</strong><br>¿Se oxida? <span style="color:'+(d.r.includes('SI')?'#28a745':'#dc3545')+';font-weight:bold;">'+d.r+'</span><br>Producto: '+d.p+'<br>💡 '+d.x;
+        r.classList.add('show');
+    }
+    const derivadosData = [
+     { d:'Cloruro de acetilo', r:'Más reactivo', p:'1° lugar', x:'Cl es mal donador por resonancia, carbonilo muy electrofílico.' },
+     { d:'Anhídrido acético', r:'Muy reactivo', p:'2° lugar', x:'Dos carbonilos compiten por el mismo oxígeno, menos estabilizado que éster.' },
+     { d:'Acetato de etilo (éster)', r:'Moderadamente reactivo', p:'3° lugar', x:'O es buen donador por resonancia, estabiliza el carbonilo.' },
+     { d:'Acetamida', r:'Poco reactivo', p:'4° lugar (más estable)', x:'N es excelente donador (menos electronegativo), muy estable.' },
+     { d:'Ion acetato', r:'Casi no reacciona', p:'Menos reactivo', x:'O⁻ es donador excelente, muy estable por resonancia.' }
+    ];
+    function verificarReactividad(){
+        const d=derivadosData[parseInt(document.getElementById('derivados-select').value,10)];
+        const r=document.getElementById('derivados-resultado');
+        r.innerHTML='<strong>'+d.d+'</strong><br>Reactividad: <span style="color:#e94560;font-weight:bold;">'+d.r+'</span><br>Posición: '+d.p+'<br>💡 '+d.x;
+        r.classList.add('show');
+    }
+    const reduccionData = [
+     { c:'Propanal', t:'Aldehído', p:'1-Propanol (alcohol primario)', x:'Aldehídos se reducen a alcoholes primarios.' },
+     { c:'2-Butanona', t:'Cetona', p:'2-Butanol (alcohol secundario)', x:'Cetonas se reducen a alcoholes secundarios.' },
+     { c:'Benzaldehído', t:'Aldehído aromático', p:'Alcohol bencílico (primario)', x:'Aldehído aromático → alcohol primario bencílico.' },
+     { c:'Acetona', t:'Cetona', p:'2-Propanol (alcohol secundario)', x:'Cetona → alcohol secundario.' },
+     { c:'3-Pentanona', t:'Cetona', p:'3-Pentanol (alcohol secundario)', x:'Cetona simétrica → alcohol secundario.' }
+    ];
+    function verificarReduccion(){
+        const d=reduccionData[parseInt(document.getElementById('reduccion-select').value,10)];
+        const r=document.getElementById('reduccion-resultado');
+        r.innerHTML='<strong>'+d.c+'</strong><br>Tipo: '+d.t+'<br>Producto: <span style="color:#28a745;font-weight:bold;">'+d.p+'</span><br>💡 '+d.x;
+        r.classList.add('show');
+    }
+    
+    // ================= QUIZ (base 30, muestra 10 al azar) =================
+    const quizBank = [
+     { question:'El grupo carbonilo presenta:', options:['Carbono sp³','Carbono sp² con geometría trigonal plana','Carbono sp lineal','Carbono sp³ tetraédrico'], correct:1, explanation:'El carbono carbonílico tiene hibridación sp² con geometría trigonal plana (~120°).' },
+     { question:'¿Por qué el enlace C=O es más corto que C=C?', options:['Porque es más débil','Porque está polarizado','Porque tiene más electrones','Porque es más largo'], correct:1, explanation:'La polarización (Cδ⁺-Oδ) añade carácter iónico, acortando y fortaleciendo el enlace.' },
+     { question:'Los aldehídos son más reactivos que las cetonas porque:', options:['Tienen más grupos alquilo','Tienen menor impedimento estérico y están más polarizados','Son más estables','Tienen mayor masa molecular'], correct:1, explanation:'Los aldehídos tienen un H (menor impedimento) y el carbono está más polarizado (sin grupos alquilo donadores).' },
+     { question:'El mecanismo de reacción de aldehídos y cetonas es:', options:['Sustitución nucleofílica','Adición nucleofílica','Eliminación','Rearreglo'], correct:1, explanation:'Aldehídos y cetonas reaccionan por adición nucleofílica al carbono carbonílico.' },
+     { question:'Un hidrato es:', options:['Un alcohol','Un diol geminal','Un acetal','Una cetona hidratada'], correct:1, explanation:'Hidrato = diol geminal (dos OH en el mismo carbono) formado por adición de agua al carbonilo.' },
+     { question:'¿Qué porcentaje de formaldehído existe como hidrato en agua?', options:['0.1%','50%','99.9%','10%'], correct:2, explanation:'El formaldehído es excepción: 99.9% existe como hidrato en agua.' },
+     { question:'Los acetales se forman con:', options:['1 molécula de alcohol','2 moléculas de alcohol en medio ácido','Agua','Amoníaco'], correct:1, explanation:'Acetal: 2 alcoholes + carbonilo en medio ácido, eliminando H₂O.' },
+     { question:'Las iminas se forman con:', options:['Amoníaco o aminas primarias','Aminas secundarias','Alcoholes','Agua'], correct:0, explanation:'Iminas (C=N) se forman con NH₃ o aminas primarias vía carbinolamina.' },
+     { question:'Los aldehídos se oxidan a:', options:['Cetonas','Alcoholes','Ácidos carboxílicos','Alcanos'], correct:2, explanation:'Aldehídos → ácidos carboxílicos (R-COOH).' },
+     { question:'Las cetonas se oxidan a:', options:['Ácidos carboxílicos','Aldehídos','No se oxidan','Alcoholes'], correct:2, explanation:'Las cetonas NO se oxidan con oxidantes comunes (requeriría romper enlace C-C).' },
+     { question:'El reactivo de Tollens es:', options:['Cu²⁺','Cr₂O₇²⁻','[Ag(NH₃)₂]⁺','MnO₄⁻'], correct:2, explanation:'Tollens = [Ag(NH₃)₂]⁺ (ion diaminoplata). Específico para aldehídos.' },
+     { question:'El reactivo de Tollens produce:', options:['Precipitado rojo','Espejo de plata','Cambio a verde','No reacciona'], correct:1, explanation:'Tollens forma espejo de plata (Ag⁰ metálico) con aldehídos.' },
+     { question:'Fehling/Benedict detectan:', options:['Cetonas','Aldehídos alifáticos','Aldehídos aromáticos','Ácidos carboxílicos'], correct:1, explanation:'Fehling/Benedict (Cu²) detectan aldehídos alifáticos (no aromáticos).' },
+     { question:'El cambio de color con Fehling es:', options:['Naranja → Verde','Violeta → Marrón','Azul → Rojo ladrillo','Incoloro → Rosa'], correct:2, explanation:'Cu²⁺ (azul) → Cu₂O (óxido cuproso, rojo ladrillo).' },
+     { question:'Los aldehídos se reducen a:', options:['Alcoholes primarios','Alcoholes secundarios','Cetonas','Ácidos'], correct:0, explanation:'Aldehídos (R-CHO) → alcoholes primarios (R-CH₂OH).' },
+     { question:'Las cetonas se reducen a:', options:['Alcoholes primarios','Alcoholes secundarios','Aldehídos','Ácidos'], correct:1, explanation:'Cetonas (R-CO-R\') → alcoholes secundarios (R-CHOH-R\').' },
+     { question:'LiAlH₄ es:', options:['Selectivo para aldehídos/cetonas','Muy reactivo, reduce todo','Suave y seguro','Incompatible solo con agua'], correct:1, explanation:'LiAlH₄ es muy reactivo: reduce ácidos, ésteres, amidas, etc. Peligroso con agua.' },
+     { question:'NaBH₄ es:', options:['Muy reactivo','Selectivo para aldehídos y cetonas','Reduce amidas','Incompatible con alcoholes'], correct:1, explanation:'NaBH₄ es selectivo y suave: solo reduce aldehídos y cetonas. Compatible con agua/alcoholes.' },
+     { question:'Orden de reactividad de derivados (de más a menos):', options:['Amida > Éster > Anhídrido > Cloruro','Cloruro > Anhídrido > Éster > Amida','Éster > Cloruro > Amida > Anhídrido','Anhídrido > Cloruro > Amida > Éster'], correct:1, explanation:'Cloruro (más reactivo) > Anhídrido > Éster > Amida (más estable).' },
+     { question:'Los cloruros de acilo son más reactivos porque:', options:['Cl es buen donador','Cl es electronegativo y mal donador por resonancia','Tienen menor masa','Son más estables'], correct:1, explanation:'Cl es muy electronegativo (efecto inductivo) pero mal donador por resonancia (orbital 3p), haciendo al carbonilo muy electrofílico.' },
+     { question:'Las amidas son más estables porque:', options:['N es mal donador','N es buen donador por resonancia','Tienen menor masa','Son más reactivas'], correct:1, explanation:'N es menos electronegativo que O, excelente donador por resonancia, estabilizando mucho el carbonilo.' },
+     { question:'La saponificación es:', options:['Hidrólisis ácida de ésteres','Hidrólisis básica de ésteres (grasas)','Oxidación de alcoholes','Reducción de cetonas'], correct:1, explanation:'Saponificación = hidrólisis básica de ésteres (grasas) → jabón (sales de ácidos grasos) + glicerol.' },
+     { question:'La hidrólisis de cloruros de acilo es:', options:['Muy lenta','Muy rápida (incluso con humedad)','Requiere calor','No ocurre'], correct:1, explanation:'Muy rápida, incluso con humedad ambiental. Por eso se manejan en condiciones anhidras.' },
+     { question:'La hidrólisis de amidas requiere:', options:['Condiciones suaves','Condiciones drásticas (HCl 6M, calor)','Solo agua','Catalizador enzimático'], correct:1, explanation:'Amidas son muy estables: requieren HCl 6M con calor prolongado o NaOH concentrado con calor.' },
+     { question:'El ion carboxilato es:', options:['Muy reactivo','El derivado menos reactivo','Intermedio en reactividad','Inestable'], correct:1, explanation:'O⁻ es donador excelente, el carboxilato es muy estable y casi no reacciona.' },
+     { question:'Los cuerpos cetónicos incluyen:', options:['Solo acetona','Acetona, acetoacetato, β-hidroxibutirato','Solo acetoacetato','Etanol y acetaldehído'], correct:1, explanation:'Cuerpos cetónicos: acetona (cetona), acetoacetato y β-hidroxibutirato. Elevados en diabetes/ayuno.' },
+     { question:'El acetaldehído es:', options:['Alcohol','Aldehído tóxico, metabolito del etanol','Cetona','Ácido carboxílico'], correct:1, explanation:'Acetaldehído (CH₃CHO) es aldehído tóxico, metabolito del etanol. Causa resaca.' },
+     { question:'Los AINEs (aspirina, ibuprofeno) tienen:', options:['Grupo cetona','Grupo ácido carboxílico (-COOH)','Grupo aldehído','Grupo éster'], correct:1, explanation:'Todos los AINEs tienen ácido carboxílico esencial para su actividad antiinflamatoria.' },
+     { question:'Los antibióticos β-lactámicos tienen:', options:['Éster cíclico','Amida cíclica de 4 miembros (β-lactama)','Aldehído','Cetona'], correct:1, explanation:'Penicilinas/cefalosporinas tienen anillo β-lactámico (amida cíclica de 4 miembros, muy reactivo por tensión).' },
+     { question:'El enlace peptídico es:', options:['Un éster','Una amida','Un aldehído','Una cetona'], correct:1, explanation:'El enlace peptídico es una amida (muy estable por resonancia).' }
+    ];
+    let quizSet=[], qIdx=0, qScore=0, qAnswered=false, cycleDone=false, quizLastSet=[];
+    
+    function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+    function overlapCount(sel, old){ const s=new Set(old.map(q=>q.question)); return sel.filter(q=>s.has(q.question)).length; }
+    
+    function startNewCycle(){
+        let sel, tries=0;
+        do { sel=shuffle(quizBank.slice()).slice(0,10); tries++; }
+        while (quizLastSet.length && overlapCount(sel, quizLastSet) > 4 && tries < 30);
+        quizLastSet=sel;
+        quizSet=sel;
+        qIdx=0; qScore=0; qAnswered=false; cycleDone=false;
+        document.getElementById('quiz-result').style.display='none';
+        document.getElementById('quiz-result').classList.remove('show');
+        renderQuestion(); updateQuizHistory();
+    }
+    function renderQuestion(){
+        const q=quizSet[qIdx];
+        document.getElementById('q-progress-text').textContent='Pregunta '+(qIdx+1)+' de 10 • Aciertos: '+qScore;
+        document.getElementById('q-bar').style.width=(qIdx/10*100)+'%';
+        let html='<div class="quiz-container"><div class="quiz-question">'+(qIdx+1)+'. '+q.question+'</div><div class="quiz-options">';
+        q.options.forEach(function(o,i){ html+='<button class="quiz-option" onclick="checkQuiz('+i+', this)">'+o+'</button>'; });
+        html+='</div><div id="quiz-feedback" style="display:none;margin-top:1rem;padding:1rem;border-radius:8px;color:#2c3e50;"></div>';
+        html+='<div style="text-align:center;margin-top:1.2rem;"><button id="btn-next" class="calc-button" style="display:none;" onclick="nextQuestion()">'+(qIdx===9?'📊 Ver resultados':'➡️ Siguiente pregunta')+'</button></div></div>';
+        document.getElementById('quiz-container').innerHTML=html;
+        qAnswered=false;
+    }
+    function checkQuiz(i,btn){
+        if(qAnswered) return; qAnswered=true;
+        const q=quizSet[qIdx];
+        const opts=btn.parentElement.querySelectorAll('.quiz-option');
+        opts.forEach(function(o){ o.disabled=true; });
+        const fb=document.getElementById('quiz-feedback');
+        if(i===q.correct){ btn.classList.add('correct'); qScore++;
+            fb.innerHTML='<span style="color:#2e7d32;font-weight:bold;">✅ ¡Correcto!</span><br>'+q.explanation;
+            fb.style.background='#e8f5e9';
+        } else { btn.classList.add('incorrect'); opts[q.correct].classList.add('correct');
+            fb.innerHTML='<span style="color:#c62828;font-weight:bold;">❌ Incorrecto.</span><br>'+q.explanation;
+            fb.style.background='#ffebee';
+        }
+        fb.style.display='block';
+        document.getElementById('q-progress-text').textContent='Pregunta '+(qIdx+1)+' de 10 • Aciertos: '+qScore;
+        document.getElementById('btn-next').style.display='inline-block';
+    }
+    function nextQuestion(){ if(qIdx<9){ qIdx++; renderQuestion(); } else { finishCycle(); } }
+    function finishCycle(){
+        cycleDone=true;
+        document.getElementById('q-bar').style.width='100%';
+        document.getElementById('quiz-container').innerHTML='';
+        const pct=Math.round(qScore*10);
+        let cycles=parseInt(localStorage.getItem('q9_cycles')||'0',10)+1;
+        const best=Math.max(parseInt(localStorage.getItem('q9_best')||'0',10),pct);
+        const totC=parseInt(localStorage.getItem('q9_totC')||'0',10)+qScore;
+        const totQ=parseInt(localStorage.getItem('q9_totQ')||'0',10)+10;
+        localStorage.setItem('q9_cycles',String(cycles)); localStorage.setItem('q9_best',String(best));
+        localStorage.setItem('q9_totC',String(totC)); localStorage.setItem('q9_totQ',String(totQ));
+        const msg=pct>=80?'🏆 ¡Excelente! Dominas el Capítulo 9.':(pct>=60?'💪 ¡Bien! Repasa los temas fallados en Conceptos y Errores Comunes.':'📚 Necesitas repasar: usa Mapa, Flashcards y Aplicaciones antes del próximo ciclo.');
+        const r=document.getElementById('quiz-result');
+        r.innerHTML='<strong>📊 Resultados del ciclo:</strong> '+qScore+'/10 correctas • <strong style="color:#e94560;">'+pct+'%</strong><br>'+msg+'<br><br>🔄 Pulsa "Reiniciar Quiz" o vuelve a entrar al Quiz para un <strong>nuevo ciclo con preguntas aleatorias</strong>.';
+        r.style.display='block'; r.classList.add('show');
+        document.getElementById('q-progress-text').textContent='Ciclo completado • Aciertos: '+qScore+'/10';
+        updateQuizHistory();
+    }
+    function updateQuizHistory(){
+        const cycles=parseInt(localStorage.getItem('q9_cycles')||'0',10);
+        const best=parseInt(localStorage.getItem('q9_best')||'0',10);
+        const totC=parseInt(localStorage.getItem('q9_totC')||'0',10);
+        const totQ=parseInt(localStorage.getItem('q9_totQ')||'0',10);
+        document.getElementById('q-history').innerHTML='📈 Ciclos: <strong>'+cycles+'</strong> | Mejor: <strong>'+best+'%</strong> | Promedio histórico: <strong>'+(totQ?Math.round(totC/totQ*100):0)+'%</strong>';
+    }
+    
+    // ================= INICIALIZACIÓN =================
+    document.addEventListener('DOMContentLoaded', function(){
+        startNewCycle();
+        fcRenderCard();
+    });
+
+    // ============================================================
+    //  AMPLIAR IMÁGENES AL HACER CLIC
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+        const imagenes = document.querySelectorAll('.img-container img, .molecule-img');
+        imagenes.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                window.open(this.src, '_blank');
+            });
+        });
+    });
+</script>
+</body>
+</html>
